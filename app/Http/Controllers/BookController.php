@@ -59,10 +59,7 @@ class BookController extends Controller
         } catch (Throwable $e) {
             report($e);
 
-            return response()->json(
-                ["message" => "Something wen't wrong!"],
-                500
-            );
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 
