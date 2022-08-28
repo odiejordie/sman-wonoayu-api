@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::get("students/export", [StudentController::class, "export"]);
+
 Route::group(["prefix" => "auth"], function () {
     Route::post("login", [AuthController::class, "login"]);
     Route::post("signup", [AuthController::class, "signup"]);

@@ -8,6 +8,8 @@ use App\Models\StudentBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
+use Excel;
+use App\Exports\StudentExport;
 
 class StudentController extends Controller
 {
@@ -133,5 +135,10 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new StudentExport(), "students.xlsx");
     }
 }
