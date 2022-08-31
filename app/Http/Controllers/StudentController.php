@@ -73,7 +73,10 @@ class StudentController extends Controller
             DB::commit();
 
             return response()->json(
-                ["message" => "Successfully borrow books!"],
+                [
+                    "student_id" => $student->id,
+                    "message" => "Successfully borrow books!",
+                ],
                 201
             );
         } catch (Throwable $e) {
