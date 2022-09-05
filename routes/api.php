@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get("students/export", [StudentController::class, "export"]);
+Route::post("books/import", [BookController::class, "import"]);
 
 Route::group(["prefix" => "auth"], function () {
     Route::post("login", [AuthController::class, "login"]);

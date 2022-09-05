@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BookPostRequest;
 use App\Http\Resources\BookResource;
+use App\Imports\BookImport;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Throwable;
+use Excel;
 
 class BookController extends Controller
 {
@@ -129,6 +131,16 @@ class BookController extends Controller
         return response()->json(
             ["message" => "Successfully delete book!"],
             201
+        );
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new BookImport(), $request->file("file")->store("temp"));
+
+        return response()->json(
+            ["message" => "Successfully import book!"],
+            200
         );
     }
 }

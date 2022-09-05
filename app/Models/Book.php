@@ -9,4 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Book extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        "collection_code",
+        "collection_title",
+        "author",
+        "publisher",
+        "stock",
+    ];
 }
